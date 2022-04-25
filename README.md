@@ -41,7 +41,7 @@ MicroServices
             Client Side Component Pattern
         Database Design Patterns
             Database Per Service
-            Shaeed Database            
+            Shared Database            
             Saga Pattern
             CQRS Pattern
         Observability Design Patterns
@@ -127,9 +127,112 @@ MicroServices
                     totalCredit
                     totalDebit
                     statementBalance
-    
+
+    Aggregator Pattern
+
+        a req should be processed by a microservice by collelcting 
+        requried information from other microservices and compose them into one resposne.
+
+        req foir statement ------------> statement-service ---------------> profile service
+                                                        <---account holder data---
+                                                        --------------------> txns service
+                                                        <----list of txns-------
+                                         does the composition and computation
+                <---statement obj-------  into statement obj
+
+    Discovery Service Design Pattern
+
+                    discovery-service
+                    (spring cloud netflix eureka discovery service)
+                            ↑|
+                        registration of urls 
+                        and retrival of urls
+                            |↓
+                -------------------------------------
+                |               |                   |
+        profile-service     txns-service     statement-service
+
+    Api Gateway Pattern Design Pattern
+
+        Andriod App/Angular App/ReactJS App
+            ↑↓
+         api-gateway
+         (spring cloud api gateway)
+            |
+            |
+            | <---->   discovery-service
+                ↑    ( netflix eureka discovery service)
+                |            ↑|
+                |        registration of urls 
+                |       and retrival of urls
+                ↓            |↓
+                -------------------------------------
+                |               |                   |                
+        profile-service     txns-service     statement-service
+           
+    Circuite Breaker design  pattern
+            is to create a thrushold for failed requests and
+            accomadate a backing-solution / fallback machanisim to handle
+            the failed reqeust.
+
+    Distributed Tracing
+
+      Andriod App/Angular App/ReactJS App
+            ↑↓
+         api-gateway
+         (spring cloud api gateway)
+            |
+            |
+            | <---->   discovery-service
+                ↑    ( netflix eureka discovery service)
+                |            ↑|
+                |        registration of urls 
+                |       and retrival of urls
+                ↓            |↓
+                -------------------------------------
+                |               |                   |                
+        profile-service     txns-service     statement-service
+            (sleuth)          (sleuth)            (sleuth)
+                |               |                      |
+                -------------------------------------------
+                            ↑↓
+                 distrubuted tracing service
+                        (zipkin-server)
+
+    External Configuaration
+
+      Andriod App/Angular App/ReactJS App
+            ↑↓
+         api-gateway
+         (spring cloud api gateway)
+            |
+            |
+            | <---->   discovery-service
+                ↑    ( netflix eureka discovery service)
+                |            ↑|
+                |        registration of urls 
+                |       and retrival of urls
+                ↓            |↓
+                -------------------------------------
+                |               |                   |                
+        profile-service     txns-service     statement-service
+            (sleuth)          (sleuth)            (sleuth)
+                |               |                      |
+                -------------------------------------------
+                            ↑↓                      ↑↓
+                 distrubuted tracing service       configuaration-service 
+                        (zipkin-server)         (spring cloud config service)
+                                                        |
+                                                        |
+                                                        git-repo
+                                                            profile.properties
+                                                            txns.properties
+                                                            statement.properties
+                                                            gateway.properties
+
     Implementing Budget-tracker
-        Step#1  implementing decoposed servce and do inter-service communication
+                                            
+        Step#1  implementing decoposed service and do inter-service communication and aggregator
             in.bt:bt-profiles
             in.bt:bt-txns
             in.bt:bt-statement
