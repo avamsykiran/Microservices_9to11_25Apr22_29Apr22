@@ -232,10 +232,10 @@ MicroServices
 
     Implementing Budget-tracker
                                             
-        Step#1  implementing decoposed service and do inter-service communication and aggregator
-            in.bt:bt-profiles
-            in.bt:bt-txns
-            in.bt:bt-statement
+        Step#1  implementing decomposed services and do inter-service communication and aggregator
+            in.bta:bta-profiles
+            in.bta:bta-txns
+            in.bta:bta-statement
 
         Step#2  implementing discovery service and client side load balancing
         Step#3  implementing api-gateway
