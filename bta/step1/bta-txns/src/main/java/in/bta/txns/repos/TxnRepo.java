@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.Query;
 import in.bta.txns.entities.Txn;
 
 public interface TxnRepo extends JpaRepository<Txn,Long>{
-	@Query("SELECT t FROM txn WHERE t.holder.ahId=:ahId AND t.txnDate BETWEEN :start AND :end")
+	@Query("SELECT t FROM Txn t WHERE t.holder.ahId=:ahId AND t.txnDate BETWEEN :start AND :end")
 	List<Txn> getPeriodicTxnByAhId(Long ahId,LocalDate start,LocalDate end);
 }
