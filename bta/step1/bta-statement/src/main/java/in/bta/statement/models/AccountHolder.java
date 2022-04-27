@@ -57,7 +57,7 @@ public class AccountHolder {
 		return currentBalacne;
 	}
 
-	public void setCurrentBalacne(double currentBalacne) {
+	public void setCurrentBalance(double currentBalacne) {
 		this.currentBalacne = currentBalacne;
 	}
 

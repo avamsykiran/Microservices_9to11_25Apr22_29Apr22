@@ -93,9 +93,7 @@ public class TxnServiceImpl implements TxnService {
 	@Override
 	public double getBalance(Long ahId) throws AccountHolderException {
 		AccountHolder ah = ahRepo.findById(ahId).orElse(null);
-		if (ah == null)
-			throw new AccountHolderException("Record not found");
-		return ah.getCurrentBalance();
+		return ah==null?0:ah.getCurrentBalance();
 	}
 
 }

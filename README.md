@@ -243,3 +243,23 @@ MicroServices
         Step#5  implementing distributed tracing
         Step#6  implementing external configuaration
 
+
+    Assigment-CaseStudy - ERP System
+    -------------------------------------------------------------------
+
+        1. To create, update and retrive Employees
+        2. To record the Employee TimeSheet,
+            a. the timesheet must be recorded date wise - no of hours worked
+            b. assuming 8 hours is the standard workign hours.
+            c. no of hours worked si zero if employee is on leave.
+        3. To gneerate the mnthly pay slip of an employee where
+            a. the hra is 12% of the basic
+            b. the ta is 4% of the basic
+            c. the leave duductions as per no of hours not worked for.
+            d. the gross and net salary
+
+        employees microservice
+        timesheet microservice
+        payslip microservice
+
+    
