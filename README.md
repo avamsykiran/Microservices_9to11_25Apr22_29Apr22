@@ -412,7 +412,7 @@ MicroServices
                 zipkin-server
                     https://search.maven.org/remote_content?g=io.zipkin&a=zipkin-server&v=LATEST&c=exec 
                     
-                    java -jar zipkin.jar
+                    java -jar zipkin-server.jar
 
         Step 5: Implement Circuit Breaker Design Pattern
             in.bta:bta-discovery  
